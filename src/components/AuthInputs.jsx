@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from './Button';
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -21,10 +22,10 @@ export default function AuthInputs() {
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
   return (
-    <div id="auth-inputs">
+    <div className="flex">
       <div className="controls">
         <p>
-          <label>Email</label>
+          <label className="">Email</label>
           <input
             type="email"
             className={emailNotValid ? 'invalid' : undefined}
@@ -36,17 +37,17 @@ export default function AuthInputs() {
           <input
             type="password"
             className={passwordNotValid ? 'invalid' : undefined}
-            onChange={(event) =>
-              handleInputChange('password', event.target.value)
-            }
+            onChange={(event) => handleInputChange('password', event.target.value)}
           />
         </p>
       </div>
       <div className="actions">
-        <button type="button" className="text-button">
+        <Button type="button" className="text-button">
           Create a new account
-        </button>
-        <button className='button' onClick={handleLogin}>Sign In</button>
+        </Button>
+        <Button className="button" onClick={handleLogin}>
+          Sign In
+        </Button>
       </div>
     </div>
   );

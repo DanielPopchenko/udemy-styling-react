@@ -1,7 +1,13 @@
-import React from "react";
+import AuthInputs from './components/AuthInputs.jsx';
+import Header from './components/Header.jsx';
 
-const App = () => {
-	return <div>App</div>;
-};
-
-export default App;
+export default function App() {
+  return (
+    <>
+      <Header />
+      <main>
+        <AuthInputs />
+      </main>
+    </>
+  );
+}
