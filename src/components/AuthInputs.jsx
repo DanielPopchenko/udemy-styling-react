@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from './Button';
+import Input from './Input';
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -22,32 +23,27 @@ export default function AuthInputs() {
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
   return (
-    <div className="flex">
-      <div className="controls">
-        <p>
-          <label className="">Email</label>
-          <input
-            type="email"
-            className={emailNotValid ? 'invalid' : undefined}
-            onChange={(event) => handleInputChange('email', event.target.value)}
-          />
-        </p>
-        <p>
-          <label>Password</label>
-          <input
-            type="password"
-            className={passwordNotValid ? 'invalid' : undefined}
-            onChange={(event) => handleInputChange('password', event.target.value)}
-          />
-        </p>
+    <div
+      id="auth-inputs"
+      className="w-full max-w-sm p-8 mx-auto rounded shadow-md bg-gradient-to-b from-stone-500 to-stone-700"
+    >
+      <div className="flex flex-col gap-2 mb-6">
+        <Input
+          label="email"
+          type="email"
+          invalid={emailNotValid}
+          onChange={(event) => handleInputChange('email', event.target.value)}
+        />
+        <Input
+          label="password"
+          type="password"
+          invalid={passwordNotValid}
+          onChange={(event) => handleInputChange('password', event.target.value)}
+        />
       </div>
-      <div className="actions">
-        <Button type="button" className="text-button">
-          Create a new account
-        </Button>
-        <Button className="button" onClick={handleLogin}>
-          Sign In
-        </Button>
+      <div className="flex justify-end gap-1">
+        <Button type="button">Create a new account</Button>
+        <Button onClick={handleLogin}>Sign In</Button>
       </div>
     </div>
   );
